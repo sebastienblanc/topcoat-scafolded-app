@@ -1,0 +1,38 @@
+<header ng-switch on="$location.path().endsWith('/Posts/new')">
+    <h3 ng-switch-when="true">Create Post</h3>
+    <h3 ng-switch-when="false">View or edit Post</h3>
+</header>
+<form id="PostForm" name="PostForm" class="form-horizontal">
+    <div ng-show="displayError" class="alert alert-error">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    <div class="control-group" ng-class="{error: PostForm.title.$invalid}">
+        <label for="title" class="control-label">Title</label>
+        <div id="titleControls" class="controls">
+            <input id="title" name="title" type="text" class="topcoat-text-input"  ng-model="post.title" placeholder="Enter the Post Title"></input>
+        </div>
+    </div>
+    <div class="control-group" ng-class="{error: PostForm.description.$invalid}">
+        <label for="description" class="control-label">Description</label>
+        <div id="descriptionControls" class="controls">
+            <input id="description" name="description" type="text" class="topcoat-text-input"  ng-model="post.description" placeholder="Enter the Post Description"></input>
+        </div>
+    </div>
+
+    <div class="bar bottom">
+        <div class="settings container">
+            <a href="#/"> <img src='img/home.svg' />
+            </a>
+            <a href="#/Posts"> <img src='img/listview.svg' />
+            </a>
+            <a id="savesavePost" name="savePost" role="button"
+               ng-click="save()" >
+                <img src='img/save.svg'/>
+            </a>
+            <a id="delete" name="delete" role="button"
+               ng-click="remove()" >
+                <img src='img/delete.svg'/>
+            </a>
+        </div>
+    </div>
+</form>
